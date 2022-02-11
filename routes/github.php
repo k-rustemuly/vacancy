@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/pull/{key}', function ($key) {
     $originalKey = env('GITHUB_PULL_SECRET', 'default');
-    if($key == $originalKey) shell_exec('git pull origin master');
-    return "set";
+    if($key == $originalKey) {
+        shell_exec('git pull origin master');
+        return response('Hello World', 200)->header('Content-Type', 'text/plain');
+    }
+    return response('Hello World', 400)->header('Content-Type', 'text/plain');
 });
