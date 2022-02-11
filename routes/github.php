@@ -17,7 +17,7 @@ Route::post('/pull/{key}', function ($key) {
     $originalKey = env('GITHUB_PULL_SECRET', 'default');
     if($key == $originalKey) {
         shell_exec('git pull origin master');
-        return response('Hello World', 200)->header('Content-Type', 'text/plain');
+        return response('Success pulled', 200)->header('Content-Type', 'text/plain');
     }
-    return response('Hello World', 400)->header('Content-Type', 'text/plain');
+    return response('The secret key is invalid', 400)->header('Content-Type', 'text/plain');
 });
