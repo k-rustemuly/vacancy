@@ -42,6 +42,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/v1.php'));
+            Route::prefix('github')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/github.php'));
         });
     }
 

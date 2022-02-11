@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/pull/{key}', function ($key) {
+    return $key." ".$_ENV['GITHUB_PULL_SECRET'];
 });
