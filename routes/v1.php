@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/user', function () {
-    return "telegram";
+    return "eee";
 });
