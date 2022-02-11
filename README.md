@@ -72,7 +72,21 @@ ln -s /home/sandboxprocess/api/storage/app/public /home/sandboxprocess/public_ht
 ```
 /opt/cpanel/ea-php81/root/usr/bin/php artisan storage:link
 ```
-Теперь приложение должно работать, и вы можете легко выполнить git pull в cPanel. 
+25. Генерация секретного ключа для автообновление репозитории 
+```
+/opt/cpanel/ea-php81/root/usr/bin/php artisan generate:github-key
+```
+26. Скопируйте код из ответа и перейдите по ссылке https://github.com/GITHUB_USERNAME/REPO_NAME/settings/hooks/new
+27. В поле "Payload URL" вставьте https://yourdomain.com/github/pull/GITHUB_KEY замените GITHUB_KEY на ключ скопированный из 26 шага
+28. "Content type" Выберите "application/json"
+29. В поле "Secret" вставьте GITHUB_KEY
+30. В панеле Cpanel нажмите на "Базы данных MySQL" и создайте базу данных
+31. В терминале введите команду и следуйте инструкцию:
+```
+/opt/cpanel/ea-php81/root/usr/bin/php artisan mysql:config
+```
 
+
+Теперь приложение должно работать, и вы можете легко выполнить git pull в cPanel. 
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
