@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/pull/{key}', function ($key) {
-    return env('GITHUB_PULL_SECRET', $key);
-    return $key;
+    $originalKey = env('GITHUB_PULL_SECRET', 'default');
+    if($key == $originalKey) shell_exec('git pull origin master');
+    return "pull";
 });
