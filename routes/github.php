@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/pull', function (Request $request) {
-    $payload = json_decode($request->getContent(), true);
-    $key = $payload['secret']?:"default";
+Route::post('/pull/{key}', function ($key) {
     $originalKey = env('GITHUB_PULL_SECRET', 'default');
     if($key == $originalKey) shell_exec('git pull origin master');
     return "set";
