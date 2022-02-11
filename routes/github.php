@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/pull/{key}', function ($key) {
-    return $key." ".$_ENV['GITHUB_PULL_SECRET'];
+    return $key;
 });
